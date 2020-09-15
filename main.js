@@ -16,6 +16,12 @@
       //０文字目が正解だった場合、locは１増えて_edで表示される
       //1文字目が正解だった場合、locは１増えて__dで表示される
       //2文字目が正解だった場合、locは１増えて___で表示される
+
+//_はloc残す宇文つなげる repeat()メソッド　※()の中は数
+//substringは文字列を分割したり任意の箇所を抽出したりする
+//str.substring(開始位置, 終了位置);
+target.textContent = '_'.repeat(loc) + word.substring(loc);
+
     }
   });
 }

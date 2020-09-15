@@ -20,8 +20,15 @@
   let word;
   //loc = ロケーションの意味の関数。今何文字目を打ってるか管理する変数
   let loc = 0;
+  let startTime;
+
   const target = document.getElementById('target');
-  setWord();
+
+
+  document.addEventListener('click', () => {
+    startTime = Date.now();
+    setWord();
+  });
 
   //keydownはボタンを押された時のメソッド
   document.addEventListener('keydown', e => {
@@ -39,8 +46,10 @@
 
     if (loc === word.length) {
       if (words.length === 0) {
+//toFixed(2) は小数点二桁まで表示させる記述
+        const elapsedTime = ((Date.now() - startTime)/ 1000).toFixed(2);
         const result = document.getElementById('result');
-        result.textContent = 'Finished!';
+        result.textContent = `Finished! ${elapsedTime} seconds!`;
         return;
       }
 

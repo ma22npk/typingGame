@@ -10,11 +10,11 @@
   }
 
   const words = [
-    'red',
-    'blue',
-    'pink',
-    'yellow',
-    'black',
+    'irumi',
+    'miruki',
+    'kirua',
+    'aruka',
+    'karuto',
   ];
 
   let word;
@@ -22,10 +22,16 @@
   let loc = 0;
   let startTime;
 
+  let isPlaying = false;
+
   const target = document.getElementById('target');
 
 
   document.addEventListener('click', () => {
+    if (isPlaying === true) {
+      return;
+    }
+    isPlaying = true;
     startTime = Date.now();
     setWord();
   });
@@ -46,10 +52,10 @@
 
     if (loc === word.length) {
       if (words.length === 0) {
-//toFixed(2) は小数点二桁まで表示させる記述
-        const elapsedTime = ((Date.now() - startTime)/ 1000).toFixed(2);
+        //toFixed(2) は小数点二桁まで表示させる記述
+        const elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
         const result = document.getElementById('result');
-        result.textContent = `Finished! ${elapsedTime} seconds!`;
+        result.textContent = `お疲れ様です！ クリアタイムは ${elapsedTime}秒でした!`;
         return;
       }
 

@@ -3,6 +3,12 @@
 'use strict'
 
 {
+  function setWord() {
+    word = words[Math.floor(Math.random() * words.length)];
+    target.textContent = word;
+    loc = 0;
+  }
+
   const words = [
     'red',
     'blue',
@@ -15,8 +21,7 @@
   //loc = ロケーションの意味の関数。今何文字目を打ってるか管理する変数
   let loc = 0;
   const target = document.getElementById('target');
-  word = words[Math.floor(Math.random() * words.length)];
-  target.textContent = word;
+  setWord();
 
   //keydownはボタンを押された時のメソッド
   document.addEventListener('keydown', e => {
@@ -31,6 +36,10 @@
     //substringは文字列を分割したり任意の箇所を抽出したりする
     //str.substring(開始位置, 終了位置);
     target.textContent = '_'.repeat(loc) + word.substring(loc);
+
+    if (loc === word.length) {
+      setWord();
+    }
 
   });
 }
